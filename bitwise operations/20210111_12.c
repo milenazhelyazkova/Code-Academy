@@ -1,10 +1,36 @@
 #include <stdio.h>
 
-int main()
-{
-    unsigned int a;
-    a =245;
+int main(){
 
-    a= a&=0xDB;//Ex.8bit 
-    printf("%d", a);
+    int num, mask;
+    num = 127; 
+    mask = 1;  
+
+    
+    num = num|mask;
+
+    mask = mask<<3;
+    num = num|mask;
+    mask = mask<<3;
+    num = num|mask;
+    mask = mask<<3;
+    num = num|mask;
+    mask = mask<<3;
+    num = num|mask;
+    mask = mask<<3;
+    num = num|mask;
+    mask = mask<<3;
+    num = num|mask;
+    mask = mask<<3;
+    num = num|mask;
+    mask = mask<<3;
+    num = num|mask;
+    mask = mask<<3;
+    num = num|mask;
+    mask = mask<<3;
+    num = num|mask;
+
+    printf("%d", num);
+
+    return 0;
 }
