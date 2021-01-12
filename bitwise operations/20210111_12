@@ -5,6 +5,6 @@ int main()
     unsigned int a;
     a =245;
 
-    a= a&=0xDB;//Ex.8bit 
+    a= a&0xB6DB6DB7;
     printf("%d", a);
 }
