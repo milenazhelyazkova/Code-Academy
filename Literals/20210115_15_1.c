@@ -1,3 +1,4 @@
+// само крайната стойност отпечатва - 13
 #include<stdio.h>
 int test();
 int main(){
@@ -12,6 +13,4 @@ int main(){
 int test(){
     static int iValue = 10;
     return iValue += 1;
-    
-   
 }
