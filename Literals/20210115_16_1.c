@@ -1,6 +1,6 @@
 #include <stdio.h>
-
-void test(float r);
+const float Pi = 3.14159;
+void test(float R);
 
 int main(){
     test(1);
@@ -9,8 +9,7 @@ int main(){
     return 0;
 }
 
-void size(float r){
-    const float pi = 3.14159;
-    float circle = r * r * pi;
+void size(float R){
+    float circle = Pi * R * R;
     printf("%f\n", circle);
 }
