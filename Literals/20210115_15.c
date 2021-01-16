@@ -1,3 +1,4 @@
+//  отпечатва всяка стойност, която приема iValue - 11, 12, 13
 #include<stdio.h>
 void test();
 int main(){
