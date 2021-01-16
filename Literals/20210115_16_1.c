@@ -1,16 +1,16 @@
 #include <stdio.h>
 
-void size(float r);
+void test(float r);
 
 int main(){
-    size(1);
-    size(1.5);
-    size(13);
+    test(1);
+    test(1.5);
+    test(13);
     return 0;
 }
 
 void size(float r){
-    const double pi = 3.14159;
-    double S = r * r * pi;
-    printf("%lf\n", S);
+    const float pi = 3.14159;
+    float circle = r * r * pi;
+    printf("%f\n", circle);
 }
