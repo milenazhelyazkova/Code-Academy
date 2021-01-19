@@ -17,7 +17,6 @@ int main()
     scanf("%d", &nA);
     printf("Insert value for nB\n");
     scanf("%d", &nB);
-    int nC;
     int bigerValue = (nA > nB ? nA : nB);
     printf("The bigger value between nA = %d and nB = %d is: %d\n", nA, nB, bigerValue);
     return 0;
