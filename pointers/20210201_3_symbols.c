@@ -14,7 +14,7 @@ int main(void){
     return 0;
 }
 double atof(char s[]){
-    double n, result;
+    double n;
     int i = 0;
     double power = 1.0;
     int sign = 1;
