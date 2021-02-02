@@ -16,9 +16,9 @@ double atof(char s[]){
     double n;
     int i = 0, sign;
     double power = 1.0;
-    for (i; s[i] == ' '; i++)
+    for (i; s[i] == ' '; i++) /* checks if the i-th symbol is space, if so, checks the next symbol */
         continue;
-    sign = (s[i] == '-'? -1 : 1); /* if the symbol before the digit is minus, sign = -1, else sign = 1 */
+    sign = (s[i] == '-'? -1 : 1); /* if the symbol after the spaces is minus, sign = -1, else sign = 1 */
     if (sign == -1)
         i++;
     for (i; s[i] >= '0' && s[i] <= '9'; i++)
