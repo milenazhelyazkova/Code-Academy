@@ -9,9 +9,9 @@ void printstr(char *s);
 
 int main(void){
 
-char string[] = "Milena Zhelyazkova";
-printstr(string);
-return 0;
+    char string[] = "Milena Zhelyazkova";
+    printstr(string);
+    return 0;
 }
 void printstr(char *s){
     int i=0;
