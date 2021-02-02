@@ -18,7 +18,7 @@ double atof(char s[]){
     double power = 1.0;
     for (i; s[i] == ' '; i++)
         continue;
-    sign = (s[i] == '-'? -1 : 1);
+    sign = (s[i] == '-'? -1 : 1); /* if the digit is negative, sign = -1, else sign = 1 */
     if (sign == -1)
         i++;
     for (i; s[i] >= '0' && s[i] <= '9'; i++)
