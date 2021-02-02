@@ -18,10 +18,10 @@ double atof(char s[]){
     int i = 0;
     double power = 1.0;
     int sign = 1;
-    while (!(s[i] >= '0' && s[i] <= '9')){
+    while (!(s[i] >= '0' && s[i] <= '9')){ /* checks the i symbol, if the symbol is not a digit, checks the next one */
         i++;
     }
-    if(i>0 && s[i-1] == '-'){
+    if(i>0 && s[i-1] == '-'){ /* if there were symbols before the first digit, checks the last simbol before the  first digit. if it is - , the sign is -1 */
         sign = -1;
     }
     for (i; s[i] >= '0' && s[i] <= '9'; i++)
@@ -32,5 +32,5 @@ double atof(char s[]){
         n = 10.0 * n + (s[i] - '0');
         power *=10;
     }
-    return sign * n/power;;
+    return sign * n/power; /* the number is multiplied by the sign= 1 or sign = -1 if there is minus in the stging before the first digit */
 }   
