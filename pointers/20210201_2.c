@@ -20,7 +20,7 @@ int main(void){
     return 0;
 }
 double atof(char s[]){
-    double n, fl;
+    double n;
     int i = 0;
     double power = 1.0;
     for (i; s[i] >= '0' && s[i] <= '9'; i++)
@@ -28,8 +28,8 @@ double atof(char s[]){
     if (s[i]== '.')
         i++;
     for (i; s[i] >= '0' && s[i] <= '9'; i++){
-        fl = 10.0 * fl + (s[i] - '0');
+        n = 10.0 * n + (s[i] - '0');
         power *=10;
     }
-    return n + fl/power;
+    return n/power;
 }
