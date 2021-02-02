@@ -13,12 +13,12 @@ int main(void){
     return 0;
 }
 double atof(char s[]){
-    double n, result;
+    double n;
     int i = 0, sign;
     double power = 1.0;
     for (i; s[i] == ' '; i++)
         continue;
-    sign = (s[i] == '-'? -1 : 1); /* if the digit is negative, sign = -1, else sign = 1 */
+    sign = (s[i] == '-'? -1 : 1); /* if the symbol before the digit is minus, sign = -1, else sign = 1 */
     if (sign == -1)
         i++;
     for (i; s[i] >= '0' && s[i] <= '9'; i++)
@@ -29,6 +29,6 @@ double atof(char s[]){
         n = 10.0 * n + (s[i] - '0');
         power *=10;
     }
-    result = sign * n/power;
-    return result;
+    return sign * n/power; /* the number is multipied by the sign, which is -1 if there is e minus and 1 if there is not */
+    
 }   
