@@ -4,17 +4,16 @@
 отрицателно и, ако е така, включете знака в резултата.*/
 
 #include <stdio.h>
-#include <string.h>
 
-double atof(char s[], int num);
+double atof(char s[]);
 
 int main(void){
     char number[] = "wr-123.321";
-    int maxI = sizeof(number)/sizeof(number[0]);
-    printf("%lf", atof(number, maxI));
+   
+    printf("%lf", atof(number));
     return 0;
 }
-double atof(char s[],int num){
+double atof(char s[]){
     double n, result;
     int i = 0;
     double power = 1.0;
