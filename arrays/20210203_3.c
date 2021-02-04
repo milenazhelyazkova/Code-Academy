@@ -20,7 +20,7 @@ int main(){
 int linSearch(int a[], int l, int d){
     int isFound=0;
     int i=0;
-    for (i; i<=l; i++){
+    for (i; i<l; i++){
         if(a[i]==d){
             isFound = 1;
             return i;
