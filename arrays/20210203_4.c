@@ -24,7 +24,7 @@ int binarySearch(int a[], int n, int x){
     int isFound = 0;
     int i=n-1/2; /* the number of the middle elemens is i */
     if(x>a[i]){
-        for (i; i<=n; i++)
+        for (i; i<n; i++)
             if(a[i]==x){
                 isFound = 1;
                 return i;
