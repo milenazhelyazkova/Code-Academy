@@ -10,6 +10,8 @@ int main(){
     char s[20];
     char t[] = "Zhelyazkova";
     int number = 2;
+    if(sizeof(s)<=number)
+        number = sizeof(s) -1; /* so we garantee the last elemen is \0 */
     strncpy(s, t, number);
     printf("%s", s);
     return 0;
