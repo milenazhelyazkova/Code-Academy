@@ -15,7 +15,7 @@ int main(){
     return 0;
 }
 void strncpy(char *s, char *t, int n){
-    while (n-- > 0 && (*s++ = *t++))
+    while (n-- > 0 && (*s++ = *t++)) /* n is decremented until =0, and content of s = content of t and incremented until 0 = 0 */
         ;
     *s = '\0';
 }
