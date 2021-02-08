@@ -64,7 +64,7 @@ int checkDay(int days[], int year, int month, int day){
    if (month>2 && year % 4 == 0 && (year % 100 != 0 || year % 400 == 0))
          ++day;
    while (month-- > 0)
-        day = day + days[month - 1]; 
+        day += days[month - 1]; 
    return day; 
 } 
   
