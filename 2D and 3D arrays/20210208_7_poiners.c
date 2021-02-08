@@ -8,13 +8,20 @@
 
 #include <stdio.h>
 
+extern int days[12];
+void choiceDate();
 int checkMonth(int *month);
 int checkDay(int year, int month, int *day);
-int check(int days[], int year, int month, int day);
+int dayNumber(int year, int month, int day);
 
 int main(){
+  
+   choiceDate();
+   
+   return 0;
+}
+void choiceDate(){
    int year, month, day;
-   int days[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
    printf("Please enter an year you want to check: ");
    scanf("%d", &year);
    printf("\nPleace enter a month(as a number from 1 to 12): ");
@@ -23,8 +30,8 @@ int main(){
    printf("\nPleace enter a day: ");
    scanf("%d", &day);
    checkDay(year, month,&day);
-   printf("\n%dth/%d/%d, is the %dth day of the year", day, month, year, check(days,year,month,day));
-   return 0;
+   
+   printf("\n%dth/%d/%d, is the %dth day of the year", day, month, year, dayNumber(year,month,day));
 }
 int checkMonth(int *month){
    if(*month<1 || *month>12){
@@ -78,11 +85,11 @@ int checkDay(int year, int month, int *day){
    }
 
 }
-int check(int days[], int year, int month, int day){
-   if (month>2 && year % 4 == 0 && (year % 100 != 0 || year % 400 == 0))
+int dayNumber(int year, int month, int day){
+   if (month>2 && year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) 
          ++day;
    while (month-- > 0)
-        day = day + days[month - 1]; 
-   return day; 
+        day += days[month - 1]; 
+   return day;
 } 
-  
+int days[12] = {31,28,31,30,31,30,31,31,30,31,30,31}; 
