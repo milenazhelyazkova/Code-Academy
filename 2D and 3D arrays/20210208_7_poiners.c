@@ -7,7 +7,6 @@
 */
 
 #include <stdio.h>
-
 extern int days[12];
 void choiceDate();
 int checkMonth(int *month);
@@ -44,7 +43,7 @@ int checkMonth(int *month){
    }
 }
 int checkDay(int year, int month, int *day){
-   if(month == 1 || month == 3 || month == 5 || month == 7 || month==8 || month==10 || month==12)
+   if(month == 1 || month == 3 || month == 5 || month == 7 || month==8 || month==10 || month==12){
       if(*day<1 || *day>31){
          int day2;
          printf("the day shouldbe between 1 and 31");
@@ -53,7 +52,7 @@ int checkDay(int year, int month, int *day){
          *day = day2;
          return *day;
       }
-   if(month == 4 || month==6 || month==9 ||month==11)
+   }else if(month == 4 || month==6 || month==9 ||month==11){
        if(*day<1 || *day>30){
          int day2;
          printf("the day shouldbe between 1 and 30");
@@ -62,7 +61,7 @@ int checkDay(int year, int month, int *day){
          *day = day2;
          return *day;
        }
-   if(month==2){
+   }else if(month==2){
       if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)){
          if(*day<1 || *day>29){
             int day2;
