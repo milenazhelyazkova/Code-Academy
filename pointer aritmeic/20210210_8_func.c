@@ -1,4 +1,4 @@
-/* 
+* 
 Напишете програма, която да генерира случайна парола от 6 букви
 докато user-а я хареса.
 Вариант 1: може да използвате цикли while/for + стрингове
@@ -11,23 +11,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+char password[7];
+
 void pass();
 int menu();
 void action(int);
 
 int main(){
     pass();
-    menu();
+    menu(); 
+    printf("here is you Pass: %s", password);
     return 0;
-}
-void pass(){
-    char *p;
-    char pass[7];
-    for(p = pass; p < pass+6; p++) {
-        *p = 'a' + (rand() % 26);
-    }
-    *p = '\0';
-    printf("HERE IS YOUR PASS: %s\n",pass);
 }
 int menu(){
     int choice;
@@ -48,4 +42,12 @@ void action(int choice){
         menu();
     } 
 }     
+void pass(){
+    char *p;
+    for(p = password; p < password+6; p++) {
+        *p = 'a' + (rand() % 26);
+    }
+    *p = '\0';
+    printf("HERE IS YOUR PASS: %s\n",password);
+}
 
