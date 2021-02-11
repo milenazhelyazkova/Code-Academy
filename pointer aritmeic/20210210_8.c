@@ -13,6 +13,7 @@
 
 void pass();
 void menu();
+char password[7];
 
 int main(){
     menu(); 
@@ -31,7 +32,7 @@ void menu(){
                 break;
             }
             else if(choice == 2){
-                printf("We are glad you like your PASS, Godbye!");
+                printf("We are glad you like your PASS: %s\nGodbye!", password);
                 break;
             }
             else{
@@ -47,10 +48,10 @@ void menu(){
 
 void pass(){
     char *p;
-    char pass[7];
-    for(p = pass; p < pass+6; p++) {
+    
+    for(p = password; p < password+6; p++) {
         *p = 'a' + (rand() % 26);
     }
     *p = '\0';
-    printf("HERE IS YOUR PASS: %s\n",pass);
+    printf("HERE IS YOUR PASS: %s\n",password);
 }
