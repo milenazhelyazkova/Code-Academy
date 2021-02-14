@@ -13,7 +13,7 @@ int main()
     int c, i=0;
     unsigned int size=2;
     char *buffer = NULL;
-    char *buffer = (char*) malloc(size * sizeof(char));
+    buffer = (char*) malloc(size * sizeof(char));
     if(NULL == buffer)
         exit(1);
     printf("Enter text: ");
