@@ -23,7 +23,7 @@ int main()
      {
           
           printf("\nEnter Student-%d Details",i+1);
-          s[i].name = inputName();
+          s[i].name = inputName(); /* if this is not here, it passes name and i can enter from family after WHY*/
           s[i].name = inputName();
           s[i].family = inputFamily();
           printf("\nage           : ");
