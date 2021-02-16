@@ -25,7 +25,5 @@ int main(){
     printf("Value to which adress is pointing pp(pp is pointing to p, value saved in p is adress of a): %p\n", *pp); /* 000000000061FE1C */
     printf("Address saved in pp (address of p): %p\n", pp); /* 000000000061FE10 */
     printf("Address of pp: %p\n", &pp); /* 000000000061FE08 */
-
-
     return 0;
 }
