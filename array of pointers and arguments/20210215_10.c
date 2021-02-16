@@ -20,10 +20,6 @@ int main(){
     printf("%d\n", *p); /*  *p = *(&a) = a = 10 */
     printf("%p\n", p); /* address saved in the pointer: 000000000061FE1C */
     printf("%p\n", &p); /* address of the pointer: 000000000061FE10 */
-    
-    
-
-
     return 0;
 }
 
