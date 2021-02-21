@@ -21,30 +21,79 @@ struct emploee
     int salary;
     struct emploee *manager;
 
-} s[3];
+} emp[3];
 
+void inputemp(int i){
+    printf("\nEnter Employee-%d details", i + 1);
+    printf("\n--------------------------\n");
+    printf("Enter Number  : ");
+    scanf("%d", &emp[i].num);
+    printf("name          : ");
+    scanf("%s", emp[i].name);
+    printf("surname       : ");
+    scanf("%s", emp[i].surname);
+    printf("family        : ");
+    scanf("%s", emp[i].family);
+    printf("position      : ");
+    scanf("%s", emp[i].position);
+    printf("experiance    : ");
+    scanf("%f", &emp[i].experiance);
+    printf("salary        : ");
+    scanf("%d", &emp[i].salary);
+}
+void inputman(int i){
+    printf("\nEnter Manager of Employee-%d details", i + 1);
+    printf("\n--------------------------\n");
+    printf("Enter Number  : ");
+    scanf("%d", &emp[i].manager->num);
+    printf("name          : ");
+    scanf("%s", emp[i].manager->name);
+    printf("surname       : ");
+    scanf("%s", emp[i].manager->surname);
+    printf("family        : ");
+    scanf("%s", emp[i].manager->family);
+    printf("position      : ");
+    scanf("%s", emp[i].manager->position);
+    printf("experiance    : ");
+    scanf("%f", &emp[i].manager->experiance);
+    printf("salary        : ");
+    scanf("%d", &emp[i].manager->salary);
+}
+void printEmpl(int i){
+    printf("\nEmployee-%d details", i + 1);
+        printf("\n--------------------------\n");
+        printf("\nNumber    :  %d", emp[i].num);
+        printf("\nName      :  %s", emp[i].name);
+        printf("\nSurname   :  %s", emp[i].surname);
+        printf("\nFamily    :  %s", emp[i].family);
+        printf("\nPosition  :  %s", emp[i].position);
+        printf("\nExperiance:  %f", emp[i].experiance);
+        printf("\nSalary    :  %d", emp[i].salary);
+}
+void printMan(int i){
+    printf("\nManager of employee-%d details", i + 1);
+        printf("\n--------------------------\n");
+        printf("\nNumber    :  %d", emp[i].manager->num);
+        printf("\nName      :  %s", emp[i].manager->name);
+        printf("\nSurname   :  %s", emp[i].manager->surname);
+        printf("\nFamily    :  %s", emp[i].manager->family);
+        printf("\nPosition  :  %s", emp[i].manager->position);
+        printf("\nExperiance:  %f", emp[i].manager->experiance);
+        printf("\nSalary    :  %d", emp[i].manager->salary);
+}
 int main()
 {
     int i;
-    
     for (i = 0; i < 3; i++)
-    {
-        printf("\nEnter Employee-%d details", i + 1);
-        printf("\n--------------------------\n");
-        printf("Enter Number  : ");
-        scanf("%d", &s[i].num);
-        printf("name          : ");
-        scanf("%s", s[i].name);
-        printf("surname       : ");
-        scanf("%s", s[i].surname);
-        printf("family        : ");
-        scanf("%s", s[i].family);
-        printf("position      : ");
-        scanf("%s", s[i].position);
-        printf("experiance    : ");
-        scanf("%f", &s[i].experiance);
-        printf("salary        : ");
-        scanf("%d", &s[i].salary);
+        inputemp(i);
+    
+    for(i=0; i<3; i++){
+        emp[i].manager = &emp[i];
+        inputman(i);
+    }
+    for(i=0; i<3; i++){
+        printEmpl(i);
+        printMan(i);
     }
     return 0;
 }
