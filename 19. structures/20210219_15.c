@@ -2,10 +2,12 @@
 Задача 15.Опишете времето: часове:минути:секунди като структура
 tagTMyTime. Използвайки тази структура, дефинирайте следните функции:
 добавяне на секунди, добавяне на минути. добавяне на часове към дадена
-променлива от тип struct tagTMyTime. Напишете следните функции:
+променлива от тип struct tagTMyTime. 
+Напишете следните функции:
 връщане на броя секунди за дадена променлива от въведения
 тип и обратна функция от секундите да се генерира променлива
-tagTMyTime. Напишете две функции, които изваждат и събират две
+tagTMyTime. 
+Напишете две функции, които изваждат и събират две
 променливи от тип struct tagMyTime и връщат променлива от същия тип.
 Използвайте тези функции, за да се уверите, че работят коректно.
 */
@@ -38,9 +40,17 @@ struct time addhour(struct time current, int addhour){
     }
     return new;
 }
+int sec(struct time current){
+    int seconds = current.sec;
+    return seconds;
+}
+
 int main(){
     struct time now = {12,14,33};
     printf("time now: %d:%d:%d",now.hour, now.min, now.sec);
     struct time wanted = addhour(now,5);
     printf("\ntime wanted: %d:%d:%d",wanted.hour, wanted.min, wanted.sec);
+    printf("\nseconds now: %d", sec(now));
+
+    return 0;
 }
