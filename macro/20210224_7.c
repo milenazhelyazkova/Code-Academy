@@ -1,9 +1,8 @@
-/*
-Задача 7. Напишете заглавен файл с декларации на функции и
-сложете гардове. Този начин намалява времето за компилиране на
-големи проекти.
-*/
-#ifndef _MYHEADER_H_
-#define _MYHEADER_H_
-/* header declarations */
-#endif // _MYHEADER_H_
+#include <stdio.h>
+#ifndef DEBUG
+#define DEBUG 1
+#endif
+
+int main(){
+    printf("DEBUG: %d", DEBUG);
+}
