@@ -18,45 +18,45 @@
 #include <stdlib.h>
 #include <windows.h>
 
+#define ROW 7
+#define COL 7
+/* to be able to print current position with different colour */
 HANDLE hConsole;
 CONSOLE_SCREEN_BUFFER_INFO consoleInfo;
 WORD saved_attributes;
 
-int board[7][7]={{3,3,2,4,3,1,2},
-                {2,4,2,3,2,4,3},
-                {4,2,3,2,4,2,1},
-                {4,4,1,2,2,3,4},
-                {3,2,3,3,4,2,2},
-                {3,2,4,2,3,2,1},
-                {1,1,3,3,4,2,70}};
-
-void printBoard(int board[7][7], int curRow, int curCol);
-void gameMove(int board[7][7], int curRow, int curCol);
-void backMove(int board[7][7],int oldRow, int oldCol, int curRow, int curCol);
-
-
+void printBoard(int board[ROW][COL], int curRow, int curCol);
+void gameMove(int board[ROW][COL], int curRow, int curCol);
+void backMove(int board[ROW][COL],int oldRow, int oldCol, int curRow, int curCol);
 
 int main(){
-    hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    int board[ROW][COL]={{3,3,2,4,3,1,2},
+                        {2,4,2,3,2,4,3},
+                        {4,2,3,2,4,2,1},
+                        {4,4,1,2,2,3,4},
+                        {3,2,3,3,4,2,2},
+                        {3,2,4,2,3,2,1},
+                        {1,1,3,3,4,2,70}};
+    hConsole = GetStdHandle(STD_OUTPUT_HANDLE); 
     GetConsoleScreenBufferInfo(hConsole, &consoleInfo);
     saved_attributes = consoleInfo.wAttributes;
     int curRow = 0;
     int curCol = 0;
     gameMove(board, curRow, curCol);
 
+    return 0;
 }
-
-void printBoard(int board[7][7], int curRow, int curCol){
+void printBoard(int board[ROW][COL], int curRow, int curCol){
     int row,col;
-    for(row=0; row<7;row++){
-        for(col = 0; col<7; col++){
+    for(row=0; row<ROW;row++){
+        for(col = 0; col<COL; col++){
             if(board[row][col]==70)
                 printf("%c ", board[row][col]);
             else{
                 if(row==curRow && col==curCol){
-                    SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
+                    SetConsoleTextAttribute(hConsole, FOREGROUND_RED); /* to print current position with red */
                     printf("%d ", board[row][col]);
-                    SetConsoleTextAttribute(hConsole, saved_attributes);
+                    SetConsoleTextAttribute(hConsole, saved_attributes); /* to return colour */
                 }
                 else
                     printf("%d ", board[row][col]);
@@ -65,9 +65,7 @@ void printBoard(int board[7][7], int curRow, int curCol){
         printf("\n");
     }
 }
-
-
-void gameMove(int board[7][7], int curRow, int curCol){
+void gameMove(int board[ROW][COL], int curRow, int curCol){
 
     printBoard(board, curRow, curCol);
 
@@ -84,21 +82,9 @@ void gameMove(int board[7][7], int curRow, int curCol){
     switch (choice)
     {
     case 'r':
-        if(step == 1 && curCol<6){
-            curCol +=1;
+        if(curCol<COL-step){ 
+            curCol +=step; 
             step = board[curRow][curCol];   
-        }
-        else if(step == 2 && curCol<5){
-            curCol +=2;
-            step = board[curRow][curCol];
-        }
-        else if(step == 3 && curCol<4){
-            curCol +=3;
-            step = board[curRow][curCol];
-        }
-        else if(step == 4 && curCol<3){
-            curCol +=4;
-            step = board[curRow][curCol];
         }
         else{
             printf("\nUnvalid move\n");
@@ -107,20 +93,8 @@ void gameMove(int board[7][7], int curRow, int curCol){
         }
         break;
     case 'l':
-        if(step == 1 && curCol>0){
-            curCol -=1;
-            step = board[curRow][curCol];
-        }
-        else if(step == 2 && curCol>1){
-            curCol -=2;
-            step = board[curRow][curCol];
-        }
-        else if(step == 3 && curCol>2){
-            curCol -=3;
-            step = board[curRow][curCol];
-        }
-        else if(step == 4 && curCol>3){
-            curCol -=4;
+        if(curCol>step-1){
+            curCol -=step;
             step = board[curRow][curCol];
         }
         else{
@@ -130,20 +104,8 @@ void gameMove(int board[7][7], int curRow, int curCol){
         }
         break;
     case 'u':
-        if(step == 1 && curRow>0){
-            curRow -=1;
-            step = board[curRow][curCol];
-        }
-        else if(step == 2 && curRow>1){
-             curRow -=2;
-            step = board[curRow][curCol];
-        }
-        else if(step == 3 && curRow>2){
-            curRow -=3;
-            step = board[curRow][curCol];
-        }
-        else if(step == 4 && curRow>3){
-            curRow -=4;
+        if(curRow>step-1){
+            curRow -=step;
             step = board[curRow][curCol];
         }
         else{
@@ -154,20 +116,8 @@ void gameMove(int board[7][7], int curRow, int curCol){
         
         break;
     case 'd':
-        if(step == 1 && curRow<6){
-            curRow +=1;
-            step = board[curRow][curCol];
-        }
-        else if(step == 2 && curRow<5){
-            curRow +=2;
-            step = board[curRow][curCol];
-        }
-        else if(step == 3 && curRow<4){
-            curRow +=3;
-            step = board[curRow][curCol];
-        }
-        else if(step == 4 && curRow<3){
-            curRow +=4;
+        if(curRow<ROW-step){
+            curRow +=step;
             step = board[curRow][curCol];
         }
         else{
@@ -177,15 +127,13 @@ void gameMove(int board[7][7], int curRow, int curCol){
         }
         break;
     }
-
     backMove(board, oldRow, oldCol, curRow, curCol);
-    
 }
-void backMove(int board[7][7], int oldRow, int oldCol, int curRow, int curCol){
+void backMove(int board[ROW][COL], int oldRow, int oldCol, int curRow, int curCol){
     printBoard(board, curRow, curCol);
 
     char choice;
-    if(board[curRow][curCol] == 70){
+    if(board[curRow][curCol] == 70){ /* check if value of current pos is F */
         printf("You won!");
         exit(0);
     }
