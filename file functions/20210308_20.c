@@ -38,40 +38,40 @@ OUTPUT3.TXT
 #include <stdlib.h>
 #include <string.h>
 
-static const char *FORMAT_IN = "(%d, %d, %d, %d, %d, %d, %d, %d, %d, %d\n%d)\n";
-static const char *FORMAT_OUT = "(%d %d\n%d %d\n%d)\n";
 
-int price[10] = {12, 21, 31, 40, 49, 58, 69, 79, 90, 101};
+
+//int price[10] = {12, 21, 31, 40, 49, 58, 69, 79, 90, 101};
 int main(void)
 {
-  int n;
-  printf("How many kilometers do you want to travel between 1 and 100: ");
-  scanf("%d", &n);
-  char c;
-  FILE *from, *to;
+    int n;
+    printf("How many kilometers do you want to travel between 1 and 100: ");
+    scanf("%d", &n);
+    char c;
+    FILE *from, *to;
 
-  from = fopen("task20.txt", "r");
-  if (from == NULL)
-  {
-    perror("task20.txt doesn't exist.");
-    exit(1);
-  }
+    from = fopen("task20.txt", "r");
+    if (from == NULL)
+    {
+        perror("task20.txt doesn't exist.");
+        exit(1);
+    }
 
-  to = fopen("task20IN.txt", "w");
-  if (to == NULL)
-  {
-    perror("task20IN.txt doesn't exist.");
-    exit(1);
-  }
-  while ((c = getc(from)) != EOF)
-  {
-    putc(c, to);
-  }
-  fclose(to);
-  fclose(from);
+    to = fopen("task20IN.txt", "w");
+    if (to == NULL)
+    {
+        perror("task20IN.txt doesn't exist.");
+        exit(1);
+    }
+    while ((c = getc(from)) != EOF)
+    {
+        putc(c, to);
+    }
+    fclose(to);
+    fclose(from);
 
-  to = fopen("task20IN.txt", "a");
-  fprintf(to, "\n%d", n);
+    to = fopen("task20IN.txt", "a");
 
-  return 0;
+    fprintf(to, "\n%d", n);
+
+    return 0;
 }
