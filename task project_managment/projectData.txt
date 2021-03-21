@@ -1,0 +1,25 @@
+project name: task 1
+object: projects in
+time: 3
+depending: none
+
+project name: task 2
+object: to enter projects
+time: 1
+depending: task 1
+
+project name: task 3
+object: to check if deppending exists
+time: 1
+depending: task 2
+
+project name: task 4
+object: to modify project
+time: 3
+depending: task 3
+
+project name: task 5
+object: to check start date
+time: 4
+depending: task 4
+
