@@ -20,20 +20,23 @@ void readFile()
     numberOfProjects = i;
     fclose(fp);
 }
-void startMenu(){
-    
+void startMenu()
+{
+
     printf("\n1. Work with data\n");
     printf("2. Exit\n");
     printf("\nPlease enter your Choice: ");
     int ch;
     fflush(stdin);
     scanf("%d", &ch);
-    while(ch!= 2)
+    while (ch != 2)
     {
-        if(ch == 1){
-           menu();
+        if (ch == 1)
+        {
+            menu();
         }
-        else if(ch != 2 && ch != 1){
+        else if (ch != 2 && ch != 1)
+        {
             printf("\nWrong choise please try again\n");
             startMenu();
         }
@@ -99,11 +102,14 @@ void menu()
             printArrayProjects();
             startMenu();
             break;
-
+        
+        default:
+            printf("\nWrong choice. Please try again\n");
+            break;
         }
+
         startMenu();
     }
-
 }
 
 void printFile()
@@ -158,7 +164,8 @@ project_t *insert()
             flag = 1;
         }
     }
-    if (strcmp(searched->depending, "none") == 0){ // if no deppending
+    if (strcmp(searched->depending, "none") == 0)
+    { // if no deppending
         flag = 1;
     }
     if (flag == 0)
@@ -219,7 +226,7 @@ void changeProject()
     int choice = 0;
     while (choice != 5)
     {
-        printf("\nChose what to change\nFor name press: 1\nFor oject press: 2\nFor time press: 3\nFor depending press: 4\nTo exit press: 5\n");
+        printf("\nChoоse what to change\n\nFor name press: 1\nFor object press: 2\nFor time press: 3\nFor depending press: 4\nTo exit press: 5\n");
         scanf(" %d", &choice);
         switch (choice)
         {
@@ -239,7 +246,7 @@ void changeProject()
             scanf("%d", &allProjects[i].time);
             break;
         case 4:
-            printf("\nEnter what to change in dependings\nPress 1 to delete\nPress 2 to change name\n");
+            printf("\nChoose what to change in dependings\nPress 1 to delete\nPress 2 to change name\n");
             int depChoice;
             fflush(stdin);
             scanf("%d", &depChoice);
@@ -249,7 +256,7 @@ void changeProject()
             }
             if (depChoice == 2)
             {
-                printf("\nEnter new deppending: ");
+                printf("\nEnter new depending: ");
                 fflush(stdin);
                 gets(allProjects[i].depending);
                 int flag = 0;
@@ -261,10 +268,11 @@ void changeProject()
                     }
                 }
 
-                if (strcmp(allProjects[i].depending, "none") == 0){ // if no deppending
+                if (strcmp(allProjects[i].depending, "none") == 0)
+                { // if no deppending
                     flag = 1;
                 }
-                
+
                 if (flag == 0)
                 {
                     printf("\nThe depending file '%s' do NOT exists, keep in mind you should enter it also: ", allProjects[i].depending);
@@ -278,28 +286,39 @@ void changeProject()
             break;
 
         default:
-            printf("\nWrong choise please try again.");
+            printf("\nWrong choice please try again.\n");
             break;
         }
     }
-    printf("Do you want to save it to file?\nFor ''YES' press: 1\nFor 'NO' press 2\n");
     int save;
-    fflush(stdin);
-    scanf("%d", &save);
-    if (save == 1)
-    {
-        FILE *fp = NULL;
-        fp = fopen("projectData.txt", "w"); // deletes the data from file
-        if (fp == NULL)
+    
+    while (save != 1 && save != 2)
+    {   printf("Do you want to save it to file?\nFor ''YES' press: 1\nFor 'NO' press 2\n");
+        fflush(stdin);
+        scanf("%d", &save);
+        if (save == 1)
         {
-            perror("Unable to open the file");
-            exit(1);
+            FILE *fp = NULL;
+            fp = fopen("projectData.txt", "w"); // deletes the data from file
+            if (fp == NULL)
+            {
+                perror("Unable to open the file");
+                exit(1);
+            }
+            for (int j = 0; j < numberOfProjects; j++)
+            { // enters new array with the changed ellement in the file
+                fprintf(fp, FORMAT_PROJECT_OUT, allProjects[j].name, allProjects[j].object, allProjects[j].time, allProjects[j].depending);
+            }
+            fclose(fp);
         }
-        for (int j = 0; j < numberOfProjects; j++)
-        { // enters new array with the changed ellement in the file
-            fprintf(fp, FORMAT_PROJECT_OUT, allProjects[j].name, allProjects[j].object, allProjects[j].time, allProjects[j].depending);
+        else if (save == 2)
+        {
+            readFile();
         }
-        fclose(fp);
+        else
+        {
+            printf("\nWrong choice. Please try again.\n");
+        }
     }
 }
 
@@ -384,69 +403,78 @@ date_t *validationDate()
     }
 }
 
-void dateForProject(){
+void dateForProject()
+{
     date_t *projectdate = validationDate();
     int daysToAdd = 0;
     int num = search(); // position in array of searched project and prints it
-    
+
     printf("\nThe start date for the project '%s' is: %d/%.2d/%d", allProjects[num].name, projectdate->day, projectdate->month, projectdate->year);
     printf("\nBefore you can start this project you must ensure the next projects is completed: ");
     char deppName[100];
-    strcpy(deppName, allProjects[num].depending);  // take deppending project name
+    strcpy(deppName, allProjects[num].depending); // take deppending project name
     int isFound = 0;
     int k;
-    if(strcmp(deppName,"none") != 0){ // there is deppending
-    
+    if (strcmp(deppName, "none") != 0)
+    { // there is deppending
+
         for (k = 0; k <= numberOfProjects; k++) // check all projects for this name
-        {   
-        
+        {
+
             if (strcmp(allProjects[k].name, deppName) == 0) // if there is such project
-            {   
-             // print name of the deppending project 
+            {
+                // print name of the deppending project
                 printf("\n%s", allProjects[k].name);
-                daysToAdd += allProjects[k].time; // add days of its completishion
+                daysToAdd += allProjects[k].time;           // add days of its completishion
                 strcpy(deppName, allProjects[k].depending); // the depp of this project is now the name to be checked
                 isFound = 1;
-                k=-1; // check again all projects
+                k = -1; // check again all projects
             }
         }
-        if(isFound == 0){
+        if (isFound == 0)
+        {
             printf("\n\nThe project '%s' is not created.", deppName);
         }
     }
-    else{
-         printf("\n\nThe project '%s' has no deppending project.", allProjects[num].name);
+    else
+    {
+        printf("\n\nThe project '%s' has no deppending project.", allProjects[num].name);
     }
-    
+
     printf("\n\nMinimum Days needed before start of the project: %d", daysToAdd);
     projectdate->day += daysToAdd;
-    if ((projectdate->day > 31) && (projectdate->month == 1 || projectdate->month == 3 || projectdate->month == 5 || projectdate->month == 7 || projectdate->month == 8 || projectdate->month == 10 || projectdate->month == 12)){
-        projectdate->month ++;
-        if(projectdate->month >12){
+    if ((projectdate->day > 31) && (projectdate->month == 1 || projectdate->month == 3 || projectdate->month == 5 || projectdate->month == 7 || projectdate->month == 8 || projectdate->month == 10 || projectdate->month == 12))
+    {
+        projectdate->month++;
+        if (projectdate->month > 12)
+        {
             projectdate->year++;
-            projectdate->month -=12;
+            projectdate->month -= 12;
         }
         projectdate->day -= 31;
     }
-    else if ((projectdate->day> 30) && (projectdate->month == 4 || projectdate->month == 6 || projectdate->month == 9 || projectdate->month == 11)){
-        projectdate->month ++;
-        if(projectdate->month >12){
+    else if ((projectdate->day > 30) && (projectdate->month == 4 || projectdate->month == 6 || projectdate->month == 9 || projectdate->month == 11))
+    {
+        projectdate->month++;
+        if (projectdate->month > 12)
+        {
             projectdate->year++;
-            projectdate->month -=12;
+            projectdate->month -= 12;
         }
-        projectdate->day -=30;
+        projectdate->day -= 30;
     }
-    else if ((projectdate->day> 28) && (projectdate->month == 2)){
-        projectdate->month ++;
-        projectdate->day -=28;
+    else if ((projectdate->day > 28) && (projectdate->month == 2))
+    {
+        projectdate->month++;
+        projectdate->day -= 28;
     }
-    else if (projectdate->day > 29 && projectdate->month == 2 && (projectdate->year % 400 == 0 || (projectdate->year % 4 == 0 && projectdate->year % 100 != 0))){
-        projectdate->month ++;
-        daysToAdd -=29;
+    else if (projectdate->day > 29 && projectdate->month == 2 && (projectdate->year % 400 == 0 || (projectdate->year % 4 == 0 && projectdate->year % 100 != 0)))
+    {
+        projectdate->month++;
+        daysToAdd -= 29;
     }
-        
-    printf("\n\nEarliest  Start date for the project is: %d/%.2d/%d", projectdate->day, projectdate->month, projectdate->year);
 
+    printf("\n\nEarliest  Start date for the project is: %d/%.2d/%d", projectdate->day, projectdate->month, projectdate->year);
 }
 
 void printArrayProjects()
