@@ -1,0 +1,22 @@
+class Parent:
+    def __init__(self,a,b):
+        self.a=a
+        self.b=b
+    def calculate(self):
+        return self.a + self.b
+
+class Child(Parent):
+    def __init__(self,a,b):
+        self.a=a
+        self.b=b
+
+    def calculate(self):
+        return self.a * self.b
+
+a = Parent(1,2)
+
+print(f"A Parent metod calculate = {a.calculate()}") # Parent metod calculate = 3
+
+b = Child(1,2)
+
+print(f"A Child metod calculate = {b.calculate()}") # Child metod calculate = 2
