@@ -1,4 +1,0 @@
-milena@DESKTOP-59JKV6R:/home/projects$ sudo cp {house1,house2} /home/projects/houses
-milena@DESKTOP-59JKV6R:/home/projects$ ls houses
-bungalow.txt  doors  house1  house2
-milena@DESKTOP-59JKV6R:/home/projects$
