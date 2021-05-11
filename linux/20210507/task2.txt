@@ -1,0 +1,24 @@
+milena@DESKTOP-59JKV6R:~$ pwd
+/home/milena
+milena@DESKTOP-59JKV6R:~$ sudo mkdir /home/projects/houses # using absolute path
+milena@DESKTOP-59JKV6R:~$ cd home/projects
+milena@DESKTOP-59JKV6R:/home/projects$ cd houses
+milena@DESKTOP-59JKV6R:/home/projects/houses$ sudo mkdir doors # using relative path
+milena@DESKTOP-59JKV6R:/home/projects/houses$ ls
+doors
+milena@DESKTOP-59JKV6R:/home/projects/houses$ sudo touch bungalow.txt  # absolute path: sudo touch /home/project/houses/bungalow.txt
+milena@DESKTOP-59JKV6R:/home/projects/houses$ ls
+bungalow.txt  doors
+milena@DESKTOP-59JKV6R:/home/projects/houses$ sudo touch /home/projects/houses/doors/bifold.txt
+milena@DESKTOP-59JKV6R:/home/projects/houses$ ls doors
+bifold.txt
+milena@DESKTOP-59JKV6R:/home/projects$ sudo mkdir -p outdoor/vegetation
+milena@DESKTOP-59JKV6R:/home/projects$ ls
+house1  house2  house3  house4  house5  house6  house7  house8  house9  houses  outdoor
+milena@DESKTOP-59JKV6R:/home/projects$ cd outdoor
+milena@DESKTOP-59JKV6R:/home/projects/outdoor$ ls
+vegetation
+milena@DESKTOP-59JKV6R:/home/projects/outdoors$ cd vegetation
+milena@DESKTOP-59JKV6R:/home/projects/outdoors/vegetation$ sudo touch lanscape.txt
+milena@DESKTOP-59JKV6R:/home/projects/outdoors/vegetation$ ls
+lanscape.txt
