@@ -1,0 +1,7 @@
+
+milena@DESKTOP-59JKV6R:/home/projects$ ls house*
+house1  house2  house3  house4  house5  house6  house7  house8  house9
+
+milena@DESKTOP-59JKV6R:/home/projects$ sudo rm {house6,house7,house8}
+milena@DESKTOP-59JKV6R:/home/projects$ ls
+house1  house2  house3  house4  house5  house9  houses  outdoors

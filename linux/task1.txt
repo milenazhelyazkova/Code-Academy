@@ -1,0 +1,21 @@
+milena@DESKTOP-59JKV6R:/home$ cd
+milena@DESKTOP-59JKV6R:~$ pwd
+/home/milena
+milena@DESKTOP-59JKV6R:~$ cd ..
+milena@DESKTOP-59JKV6R:/home$ pwd
+/home
+milena@DESKTOP-59JKV6R:/home$ sudo mkdir projects
+milena@DESKTOP-59JKV6R:/home$ ls
+milena  projects
+milena@DESKTOP-59JKV6R:/home$ cd projects
+milena@DESKTOP-59JKV6R:/home/projects$ pwd
+/home/projects
+milena@DESKTOP-59JKV6R:/home/projects$ sudo touch house{1..9}
+milena@DESKTOP-59JKV6R:/home/projects$ ls
+house1  house2  house3  house4  house5  house6  house7  house8  house9
+milena@DESKTOP-59JKV6R:/home/projects$ sudo touch me{1..5}
+milena@DESKTOP-59JKV6R:/home/projects$ ls
+house1  house2  house3  house4  house5  house6  house7  house8  house9  me1  me2  me3  me4  me5
+milena@DESKTOP-59JKV6R:/home/projects$ ls house*
+house1  house2  house3  house4  house5  house6  house7  house8  house9
+
