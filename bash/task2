@@ -1,0 +1,16 @@
+# Write a calculator that takes the arguments from the command line and performs the corresponding calculations
+
+#!/bin/bash
+
+NUM1=$1
+NUM2=$2
+
+ADD=$(($1+$2))
+SUBTR=$(($1-$2))
+MUL=$(($1*$2))
+DIV=$(($1/$2))
+
+echo $1+$2=$ADD
+echo $1-$2=$SUBTR
+echo $1*$2=$MUL
+echo $1/$2=$DIV
