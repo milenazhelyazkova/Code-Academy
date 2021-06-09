@@ -1,0 +1,8 @@
+#Create a script that creates all the files whose names are set when the script is run from the command line
+
+#!/bin/bash
+
+for i in $@
+do
+touch $i
+done
