@@ -7,7 +7,7 @@ SECOND=$2
 READ=$?
 if [ "$READ" -eq "0" ]
 then
-	echo "Success test"
+	echo "tast passed"
 else
-	echo "Unsuccess test,please try again"
+	echo "test failed"
 fi
