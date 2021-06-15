@@ -9,8 +9,8 @@
 int strend(char *s, char *t);
 
 int main(int argc, char *argv[]){
-    char s[] = argv[1]; 
-    char t[] = argv[2]; 
+    char *s[] = argv[1]; 
+    char *t[] = argv[2]; 
     if(argc!=3)
         exit(1);
     if(s==NULL || t==NULL){
