@@ -12,6 +12,7 @@ int main(int argc, char *argv[]){
     char t[] = argv[2]; 
     if(s==NULL || t==NULL){
         exit(1);
+    int i,j;
     for(i=0,j=strlen(s)-1; i<j; i++,j--){
         if(s[i] > 127 || s[j] < 0)
             exit(2);
