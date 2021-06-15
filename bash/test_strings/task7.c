@@ -4,11 +4,12 @@
 */
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 int strend(char *s, char *t);
 
 int main(int argc, char *argv[]){
-    char s[] = argv[1];
+    char s[] = argv[1]; 
     char t[] = argv[2]; 
     if(s==NULL || t==NULL){
         exit(1);
