@@ -17,10 +17,10 @@ int main(int argc, char *argv[]){
             exit(2);
     }
     int rez= strend(s,t);
-    if(rez==0){
+    if(rez==1){
         printf("The %s is at the end of %s", t,s );
     }
-    if(rez==1){
+    if(rez==0){
         printf("The %s is NOT at the end of %s", t,s );
     }
     return 0;
