@@ -6,34 +6,33 @@
 #include <string.h>
 #include <stdlib.h>
 
-int strend(char *s, char *t);
+int strend(char s[], char t[]);
 
 int main(int argc, char *argv[]){
-    char *s[] = argv[1]; 
-    char *t[] = argv[2]; 
     if(argc!=3)
         exit(1);
-    if(s==NULL || t==NULL){
+    if(argv[1]==NULL || argv[2]==NULL){
         exit(2);
     }
+
+    int rez= strend(argv[1],argv[2]);
+    if(rez==1){
+        printf("The %s is at the end of %s", argv[2],argv[1] );
+    }
+    if(rez==0){
+        printf("The %s is NOT at the end of %s", argv[2],argv[1] );
+    }
+    return 0;
+}
+int strend(char s[], char t[]) {
     int i,j;
     for(i=0,j=strlen(s)-1; i<j; i++,j--){
         if(s[i] > 127 || s[j] < 0)
             exit(3);
     }
-    int rez= strend(s,t);
-    if(rez==1){
-        printf("The %s is at the end of %s", t,s );
-    }
-    if(rez==0){
-        printf("The %s is NOT at the end of %s", t,s );
-    }
-    return 0;
-}
-int strend(char *s, char *t) {
-    int i = strlen(s) - strlen(t);/* number of elements of s - number of elements of t is the position from which we want to check s */
+    int k = strlen(s) - strlen(t);/* number of elements of s - number of elements of t is the position from which we want to check s */
     for(;*t !='\0'; s++,t++)
-        if(*(s+ i) != *t) 
+        if(*(s+ k) != *t)
            return 0;
     return 1;
 }
