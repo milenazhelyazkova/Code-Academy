@@ -1,6 +1,6 @@
-code codeAcademy
-code Academycode
-123 456
-!? !!!?
-   
-абв дфгабв
+codeAcademy code
+Academycode code
+123456 456
+!!!? !?
+
+дфгабв абв
