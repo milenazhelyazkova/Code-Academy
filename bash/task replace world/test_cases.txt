@@ -1,6 +1,5 @@
 "I am a poor programer" good poor
 "I am a poor programer" good zoo
-123456 456
-"!! !!" ?? !!
+"12345" 2 3
 "дфгабв" ABV абв 
 "I am a poor programer" good 
